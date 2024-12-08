@@ -139,7 +139,8 @@ def power(request):
 
 
 ## HOMEPAGE:
-![screenshot 90  - Copy](https://github.com/user-attachments/assets/dde81757-2752-4bdf-bdb0-a24e66609bd8)
+![screenshot 91](https://github.com/user-attachments/assets/c153f1e9-0cfa-446f-a6d5-546d27c60ea3)
+
 
 
 
