@@ -32,12 +32,115 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 ## PROGRAM :
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>Power Of the Lamp Filament</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<style type="text/css">
+body {
+    background-color: rgb(0, 0, 0);
+}
+.edge {
+    width: 100%;
+    padding-top: 250px;
+    text-align: center;
+}
+.box {
+    display: inline-block;
+    border;
+    width: 500px;
+    min-height: 300px;
+    font-size: 20px;
+    background-color: rgb(9, 213, 240);
+}
+.formelt {
+    color: black;
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 6px;
+}
+h1 {
+    color: black;
+    padding-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="edge">
+    <div class="box">
+        <h1>power of the lamp filament </h1>
+        <h3>DHARSHINI R (24006560)</h3>
+        <form method="POST">
+            <div class="formelt">
+                Intensity: <input type="text" placeholder="Enter the INTENSITY value" > <br><br>
+            </div>
+            <div class="formelt">
+                Resistance: <input type="text" placeholder="Enter the RESISTANCE value" > <BR><BR>
+            </div>
+            <div class="formelt">
+                <input type="submit" value="Calculate"><br/>
+            </div>
+            <div class="formelt">
+                Power: <input type="text" name="power" value="{{power}}">m<sup>2</sup><br/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+```
+
+
+
+urls.py
+```
+from django.contrib import admin
+from django.urls import path
+from mathapp import views
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('power/',views.power,name="power"),
+    path('',views.power,name="power")
+]
+```
+
+
+views.py
+```
+from django.shortcuts import render
+def power(request):
+    context = {}
+    context['power'] = "0"
+    context['i'] = "0"
+    context['r'] = "0"
+    if request.method == 'POST':
+        print("POST method is used")
+        print('request.POST:', request.POST)
+        i = request.POST.get('intensity', '0') 
+        r = request.POST.get('resistance', '0') 
+        print('intensity =', i)
+        print('resistance =', r)
+        power =  int(i) * int(i) * int(r)
+        context['power'] = power
+        context['i'] = i
+        context['r'] = r
+        print('Power =', power)
+    
+    return render(request, 'mathapp/math.html',context)
+```
 
 
 ## SERVER SIDE PROCESSING:
+![screenshot 90 ](https://github.com/user-attachments/assets/70042b5d-cb4d-4b79-8a6c-f902df35fcf2)
 
 
 ## HOMEPAGE:
+![screenshot 90  - Copy](https://github.com/user-attachments/assets/dde81757-2752-4bdf-bdb0-a24e66609bd8)
+
 
 
 ## RESULT:
